@@ -1,3 +1,4 @@
+from pickletools import pybytes_or_str
 from gameoflife import width, height, stage, print_stage, count_neighbors
 
 def init_stage(stage):
@@ -16,7 +17,7 @@ def init_stage(stage):
 
 def one_generation(stage):
     for v_pos in range(len(stage)):
-        for h_pos in range(len(v_pos)):
+        for h_pos in range(len(stage[v_pos])):
             neighbors = count_neighbors(stage, v_pos, h_pos)
             if not stage[v_pos][h_pos] and neighbors == 3:
                 stage[v_pos][h_pos] = True
@@ -34,4 +35,3 @@ print_stage(stage)
 one_generation(stage)
 print("Second Generation:")
 print_stage(stage)
-
